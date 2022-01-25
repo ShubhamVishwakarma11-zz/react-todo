@@ -1,0 +1,9 @@
+.TodoList {
+  background-color: #161722;
+  padding: 5%;
+  border-radius: 10px;
+}
+
+.emptyList {
+    color: #777a91;
+}

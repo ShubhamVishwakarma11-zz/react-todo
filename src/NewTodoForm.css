@@ -1,0 +1,16 @@
+.NewTodoInput {
+    margin-left: 5px;
+    margin-top: 40px;
+    background-color: #25273c;
+    padding: 10px;
+    color: white;
+    font-size: 1.1rem;
+    border: 1px solid #25273c;
+    border-radius: 5px;
+    width: 95%;
+}   
+
+.NewTodoInput::placeholder{
+    color: #777a91;
+}
+

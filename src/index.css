@@ -1,4 +1,19 @@
+
+/**
+  background: linear-gradient(to right, #2980b9, #2c3e50);  
+  linear-gradient(to right, hsla(212,19%,19%,0.7) , hsla(211,15%,33%,0.7))
+*/
 body {
+  
+  background-image: 
+    linear-gradient(to right, hsla(212,19%,19%,0.7) , hsla(0,0%,26%,0.7)),
+    url('./img/background.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+
+
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
