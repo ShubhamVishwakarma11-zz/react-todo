@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
-import './NewTodoForm.css';
-import {v4 as uuid} from 'uuid';
+import './TodoForm.css';
 
-class NewTodoForm extends Component {
+class TodoForm extends Component {
     constructor(props) {
         super(props); 
         this.state = {
-            task: ''
+            task: this.props.task
         }
         this.handleChange = this.handleChange.bind(this);
-        this.handleAddTask = this.handleAddTask.bind(this);
+        this.handleUpdateTask = this.handleUpdateTask.bind(this);
     }
 
     handleChange(evt) {
@@ -18,19 +17,19 @@ class NewTodoForm extends Component {
         });
     }
 
-    handleAddTask (evt) {
+    handleUpdateTask (evt) {
         evt.preventDefault();
-        let newTask = {...this.state,id:uuid(),done:false,editing:false};
-        this.props.addTask(newTask);
+        let updatedTask = {...this.state,id:this.props.id,done:false,editing:false};
+        this.props.updateTask(updatedTask,this.props.id);
         this.setState({task:''});
     }
 
     render() {
         return (
-            <div>
-                <form onSubmit={this.handleAddTask} >
+            <div className="TodoFormContainer">
+                <form onSubmit={this.handleUpdateTask} >
                     <input
-                        className='NewTodoInput'
+                        className='TodoInput'
                         onChange={this.handleChange}
                         value = {this.state.task}
                         name = 'task'
@@ -43,4 +42,4 @@ class NewTodoForm extends Component {
     }
 }
 
-export default NewTodoForm;
+export default TodoForm;

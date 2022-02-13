@@ -1,0 +1,20 @@
+.TodoFormContainer {
+    display: inline-block;
+    width: 80%;
+}
+
+.TodoInput {
+    margin-left: 5px;
+    margin-top: 5px;
+    background-color: #25273c;
+    padding: 10px;
+    color: white;
+    font-size: 1.1rem;
+    border: 1px solid #25273c;
+    border-radius: 5px;
+    width: 100%;
+}   
+
+.TodoInput::placeholder{
+    color: #777a91;
+}

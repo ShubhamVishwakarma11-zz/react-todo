@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import TodoForm from './TodoForm';
 import './Todo.css'
 
 class Todo extends Component {
@@ -6,6 +7,7 @@ class Todo extends Component {
         super(props);
         this.handleRemoveTask = this.handleRemoveTask.bind(this);
         this.handleToggle = this.handleToggle.bind(this);
+        this.handleToggleEdit = this.handleToggleEdit.bind(this);
     }
 
 
@@ -15,6 +17,10 @@ class Todo extends Component {
 
     handleToggle() {
         this.props.toggleTaskStatus(this.props.id);
+    }
+
+    handleToggleEdit() {
+        this.props.toggleEdit(this.props.id);
     }
 
     render() {
@@ -30,10 +36,24 @@ class Todo extends Component {
                         onChange={this.handleToggle}/>
                 </label>
                     
-                    <p className = {taskClass}> {this.props.task}</p>
-                    <button onClick={this.handleRemoveTask} className='Todo-btn' > 
-                        <i class="fas fa-trash"></i>
+                     
+                    {this.props.editing 
+                    ? <TodoForm 
+                        task={this.props.task} 
+                        id={this.props.id}
+                        updateTask = {this.props.updateTask} />
+                    : <p className = {taskClass}>{this.props.task}</p>}
+                    
+                    
+                    <button onClick={this.handleToggleEdit} className='Todo-btn'>
+                        <i className='fas fa-pen'></i>
                     </button>
+
+                    <button onClick={this.handleRemoveTask} className='Todo-btn' > 
+                        <i className="fas fa-trash"></i>
+                    </button>
+                    
+
   
             </div>
         )

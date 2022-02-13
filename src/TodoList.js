@@ -11,7 +11,9 @@ class TodoList extends Component {
         }
         this.addTask = this.addTask.bind(this);
         this.removeTask = this.removeTask.bind(this);
-        this.toggleTaskStatus = this.toggleTaskStatus.bind(this);   
+        this.toggleTaskStatus = this.toggleTaskStatus.bind(this); 
+        this.toggleEdit = this.toggleEdit.bind(this);  
+        this.updateTask = this.updateTask.bind(this);
     }
 
 
@@ -40,6 +42,30 @@ class TodoList extends Component {
         });
     }
 
+    toggleEdit(id) {
+        this.setState({
+            todos: this.state.todos.map(todo => {
+                if (todo.id === id) {
+                    todo.editing = !todo.editing;
+                }
+                return todo;
+            })
+        });
+    }
+
+    updateTask(updatedTask,id) {
+        this.setState(currState => {
+            let newTaskList = currState.todos.map(todo => {
+                if (todo.id === id) {
+                    return updatedTask;
+                }
+                return todo;
+            })
+
+            return {todos: newTaskList};
+        })
+    }
+
     render() {
         let taskList = this.state.todos.map(todo => (
             <Todo 
@@ -49,7 +75,11 @@ class TodoList extends Component {
                 removeTask={this.removeTask} 
                 id={todo.id}
                 done={todo.done}
+                editing={todo.editing}
+                toggleEdit = {this.toggleEdit}
+                updateTask = {this.updateTask}
                 />
+            
         ));
         let emptyList = <p className='emptyList'>No task available...</p>;
         return (
